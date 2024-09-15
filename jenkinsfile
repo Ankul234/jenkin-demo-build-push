@@ -22,11 +22,11 @@ pipeline {
         stage('Checkout Jenkins Upgrade3 Git Repository') {
             steps {
                 script {
-                    // Clone the Git repository's master branch
+                    // Clone the Git repository's main branch
                     def gitRepoUrl = 'https://github.com/Ankul234/jenkin-demo-build-push.git'
 
                     checkout([$class: 'GitSCM', 
-                        branches: [[name: '*/master']], 
+                        branches: [[name: '*/main']], 
                         userRemoteConfigs: [[url: gitRepoUrl]], 
                         extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'CloneOption', noTags: false, shallow: true, depth: 1]]
                     ])
@@ -36,7 +36,8 @@ pipeline {
 
         stage('Build Application') {
             steps {
-                sh 'chmod +x ci/01-build.sh && ci/01-build.sh'
+                echo "Present directory: $WORKSPACE"
+                sh 'chmod +x /ci/01-build.sh && ci/01-build.sh'
             }
         }
 
