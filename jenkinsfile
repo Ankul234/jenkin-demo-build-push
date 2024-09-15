@@ -37,7 +37,7 @@ pipeline {
         stage('Build Application') {
             steps {
                 echo "Present directory: $WORKSPACE"
-                sh 'chmod +x ci/01-build.sh && ci/01-build.sh'
+                sh 'chmod +x ./ci/01-build.sh && ./ci/01-build.sh'
             }
         }
 
