@@ -36,13 +36,13 @@ pipeline {
 
         stage('Build Application') {
             steps {
-                sh 'chmod +x ./jenkins-plugin-model/ci/01-build.sh && ./jenkins-plugin-model/ci/01-build.sh'
+                sh 'chmod +x ci/01-build.sh && ci/01-build.sh'
             }
         }
 
         stage('Unit Test') {
             steps {
-                sh 'chmod +x ./jenkins-plugin-model/ci/03-unit-test.sh && ./jenkins-plugin-model/ci/03-unit-test.sh'
+                sh 'chmod +x ci/03-unit-test.sh && ci/03-unit-test.sh'
                 mstest testResultsFile:"**/*.trx"
             }
         }
